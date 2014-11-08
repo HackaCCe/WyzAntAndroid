@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WyzAntAndroid</string>
+    <string name="label_title">WyzAnt Tutor Finder</string>
+    <string name="label_subject">Subject</string>
+    <string name="label_zip">ZIP code</string>
+    <string name="label_distance">Distance</string>
+    <string name="label_hourly_rate">Hourly Rate</string>
+    <string name="label_age">Age</string>
+    <string name="label_gender">Gender</string>
+
+    <string-array name="options_distance">
+        <item>1 miles</item>
+        <item>2 miles</item>
+        <item>5 miles</item>
+        <item>10 miles</item>
+        <item>15 miles</item>
+        <item>20 miles</item>
+        <item>25 miles</item>
+        <item>30 miles</item>
+        <item>35 miles</item>
+        <item>40 miles</item>
+    </string-array>
 </resources>
