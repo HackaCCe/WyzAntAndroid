@@ -113,9 +113,29 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ageField"
+        android:id="@+id/genderField"
         android:inputType="text"
         />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_bg_check"
+        android:id="@+id/checkBox"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_search"
+        android:id="@+id/search"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/query"
+        android:id="@+id/queryPreview"/>
 
 </LinearLayout>
 
