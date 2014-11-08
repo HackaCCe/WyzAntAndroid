@@ -4,7 +4,7 @@
     <string name="label_title">WyzAnt Tutor Finder</string>
     <string name="label_subject">Subject</string> <!--kw-->
     <string name="label_zip">ZIP code</string> <!--z-->
-    <string name="label_distance">Distance</string> <!--d-->
+    <string name="label_distance">Distance in Miles</string> <!--d-->
     <string name="label_hourly_rate">Hourly Rate</string> <!--minh, maxh; 10..200-->
     <string name="label_age">Age</string> <!--mina, maxa; 18..100-->
     <string name="label_gender">Gender</string> <!--im-->
@@ -14,16 +14,16 @@
     <string name="query">preview here</string>
 
     <string-array name="options_distance">
-        <item>1 miles</item>
-        <item>2 miles</item>
-        <item>5 miles</item>
-        <item>10 miles</item>
-        <item>15 miles</item>
-        <item>20 miles</item>
-        <item>25 miles</item>
-        <item>30 miles</item>
-        <item>35 miles</item>
-        <item>40 miles</item>
+        <item>1</item>
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
     </string-array>
 
     <string-array name="options_gender">
