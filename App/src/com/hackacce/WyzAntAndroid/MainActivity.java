@@ -12,7 +12,7 @@ public class MainActivity extends Activity {
      * Called when the activity is first created.
         */
 
-    Button mStringBuilder;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,9 +43,13 @@ public class MainActivity extends Activity {
         EditText rateLowerField = (EditText) findViewById(R.id.rateLowerField);
         EditText rateUpperField = (EditText) findViewById(R.id.rateUpperField);
 
+
+        CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
+
         Spinner distField = (Spinner) findViewById(R.id.distField);
         Spinner genderField = (Spinner) findViewById(R.id.genderField);
 
+        Button mStringBuilder;
         mStringBuilder = (Button)findViewById(R.id.search);
         mStringBuilder.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,13 +57,16 @@ public class MainActivity extends Activity {
 
 //Convert user input to string
 
-               String query ="http://www.wyzant.com/tutorsearch?kw="+ subjectField.getText().toString()
+               String query ="http://www.wyzant.com/tutorsearch?kw="
+                       + subjectField.getText().toString()
                        + "&z=" + zipField.getText().toString()
                        + "&d=" + distField.getSelectedItem().toString()
                         + "&mina=" + ageLowerField.getText().toString()
                        + "&maxa=" + ageUpperField.getText().toString()
-                       + "&im="+ (genderField.getLastVisiblePosition() -1).toString();
-
+                     + "&maxh=" + rateUpperField.getText().toString()
+                       + "&minh=" + rateLowerField.getText().toString()
+                       + "&im="+ (genderField.getLastVisiblePosition() -1)
+                      + "&bgCheck=" +  (checkBox.isChecked()? "true" : "false")
                        ;
               TextView test = (TextView)findViewById(R.id.queryPreview);
                 test.setText(query);
