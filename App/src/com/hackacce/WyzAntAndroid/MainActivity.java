@@ -38,16 +38,29 @@ public class MainActivity extends Activity {
         genderSpinner.setAdapter(genderAdapter);
         EditText subjectField = (EditText) findViewById(R.id.subjectField);
         EditText zipField = (EditText) findViewById(R.id.zipField);
+        EditText ageLowerField = (EditText) findViewById(R.id.ageLowerField);
+        EditText ageUpperField = (EditText) findViewById(R.id.ageUpperField);
+        EditText rateLowerField = (EditText) findViewById(R.id.rateLowerField);
+        EditText rateUpperField = (EditText) findViewById(R.id.rateUpperField);
+
         Spinner distField = (Spinner) findViewById(R.id.distField);
+        Spinner genderField = (Spinner) findViewById(R.id.genderField);
+
         mStringBuilder = (Button)findViewById(R.id.search);
         mStringBuilder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 //Convert user input to string
+
                String query ="http://www.wyzant.com/tutorsearch?kw="+ subjectField.getText().toString()
                        + "&z=" + zipField.getText().toString()
-                       + "&d=" + distField.getSelectedItem().toString();
+                       + "&d=" + distField.getSelectedItem().toString()
+                        + "&mina=" + ageLowerField.getText().toString()
+                       + "&maxa=" + ageUpperField.getText().toString()
+                       + "&im="+ (genderField.getLastVisiblePosition() -1).toString();
+
+                       ;
               TextView test = (TextView)findViewById(R.id.queryPreview);
                 test.setText(query);
 
