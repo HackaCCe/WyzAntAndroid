@@ -12,7 +12,8 @@
 
     <string name="label_search">Search</string>
 
-    <string name="baseQuery">"http://www.wyzant.com/tutorsearch</string>
+    <string name="baseUrl">http://www.wyzant.com/</string>
+    <string name="baseQuery">tutorsearch</string>
     <string name="query">preview here</string>
 
     <string-array name="options_distance">
