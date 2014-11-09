@@ -4,13 +4,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
-public class MainActivity extends Activity {
+import java.io.IOException;
+
+public class QueryActivity extends Activity {
     /**
-     * Called when the activity is first created.
-        */
+    * Called when the activity is first created.
+    */
+
+    private static final String TAG = "QueryActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,12 +83,19 @@ public class MainActivity extends Activity {
 
                 TextView test = (TextView) findViewById(R.id.queryPreview);
                 test.setText(query);
-
+/*
                 // Launches browser intent
 
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(query.toString()));
                 startActivity(i);
+*/
+                try {
+                    Document doc = Jsoup.connect(query.toString()).get();
+                } catch (IOException ioe) {
+                    Log.e(TAG, ioe.getMessage());
+                }
+
             }
 
         });
