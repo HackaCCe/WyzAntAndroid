@@ -8,17 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
 
 public class QueryActivity extends Activity {
     private static final String TAG = "QueryActivity";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.query_activity);
 
         Spinner distSpinner = (Spinner) findViewById(R.id.distField);
         // Create an ArrayAdapter using the string array and a default spinner layout
