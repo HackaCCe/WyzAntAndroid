@@ -1,11 +1,13 @@
 package com.hackacce.WyzAntAndroid;
 
 import android.content.Context;
+import android.util.Log;
+import org.jsoup.nodes.Element;
 
 import java.util.ArrayList;
-//import java.util.UUID;
 
 public class TutorDrawer {
+    private static final String TAG = "TutorDrawer";
     private ArrayList<Tutor> mTutors;
 
     private static TutorDrawer sTutorDrawer;
@@ -13,7 +15,7 @@ public class TutorDrawer {
 
     private TutorDrawer(Context appContext) {
         mAppContext = appContext;
-        mTutors = new ArrayList<>();
+        mTutors = TutorListActivity.getTutors();
 
     }
 
@@ -27,10 +29,4 @@ public class TutorDrawer {
         return mTutors;
     }
 
-/*    public Tutor getCrime(UUID id) {
-        for (Tutor t: mTutors)
-            if (t.getId().equals(id))
-                return t;
-        return null;
-    }*/
 }

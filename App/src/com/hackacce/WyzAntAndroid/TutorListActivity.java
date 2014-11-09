@@ -7,18 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
-//import android.widget.Toast;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class TutorListActivity extends Activity {
     private static final String TAG = "TutorListActivity";
-    private ArrayList<Tutor> mTutors;
+    private static ArrayList<Tutor> sTutors = new ArrayList<>();
+    public static ArrayList<Tutor> getTutors() {return sTutors;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +30,12 @@ public class TutorListActivity extends Activity {
         String query = i.getStringExtra("URL");
 
 //        String query = savedInstanceState.getString("URL");
-        //System.out.println("URL: " + query);
-//        Toast.makeText(TutorListActivity.this, "query is: " + query, Toast.LENGTH_LONG).show();
         Log.d(TAG, "query is: " + query);
 
         Thread downloadThread = new Thread() {
             @Override
             public void run() {
                 try {
-//                    Document doc = Jsoup.connect("http://www.wyzant.com/tutorsearch?kw=&z=90048").get();
                     Document doc = Jsoup.connect(query).get();
         /*
                             Document doc = Jsoup
@@ -55,11 +53,17 @@ public class TutorListActivity extends Activity {
                                     )
                                     .get();
         */
-//                    Toast.makeText(TutorListActivity.this, doc.title(), Toast.LENGTH_LONG).show();
                     Log.d(TAG, "Title is: " + doc.title());
 
 //                    mTutors = new ArrayList<>();
                     Looper.prepare();
+
+                    Elements tutors = doc.getElementsByClass("TutorResult");
+                    for (Element tutorElement : tutors) {
+                        Tutor tutor = new Tutor(tutorElement);
+                        Log.d(TAG, tutor.getName());
+                        sTutors.add(tutor);
+                    } // for
 
                     FragmentManager fm = getFragmentManager();
                     Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
@@ -69,18 +73,6 @@ public class TutorListActivity extends Activity {
                         fm.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
                     }
 
-                    Elements tutors = doc.getElementsByClass("TutorResult");
-
-                    mTutors = new ArrayList<>();
-                    for (Element tutorElement : tutors) {
-//                        System.out.print("#"+(i+1)+": ");
-                        Tutor tutor = new Tutor(tutorElement);
-                        mTutors.add(tutor);
-//                        TutorFragment tutorFragment = new TutorFragment();
-//                        tutorFragment.setTutor(t);
-//                        fm.beginTransaction().add(R.id.fragmentContainer, tutorFragment).commit();
-//                        System.out.println(t.toString());
-                    } // for
 
                 } catch (IOException ioe) {
                     Log.e(TAG, ioe.getMessage());
@@ -92,6 +84,14 @@ public class TutorListActivity extends Activity {
     } // onCreate(Bundle savedInstanceState)
 
     protected Fragment createFragment() {
-        return new TutorListFragment();
+        TutorListFragment tutorListFragment = new TutorListFragment();
+/*
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("TUTORS", tutors);
+        tutorListFragment.setArguments(bundle);
+*/
+        return tutorListFragment;
     }
+
+    class SerializableElements extends Elements implements Serializable {}
 }
