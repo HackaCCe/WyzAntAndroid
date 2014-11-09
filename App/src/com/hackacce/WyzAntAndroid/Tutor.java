@@ -7,7 +7,12 @@ import org.jsoup.nodes.Element;
  * A tutor has one field for each corresponding HTML element in a div of class "TutorResult"
  */
 public class Tutor {
-    String name, imageurl, location, distance, zip, hourlyRate, tagline, blurb, subjects, numRatings, responseTime;
+    String name, imageurl, location, distance, zip, hourlyRate, tagline, blurb, subjects, numRatings, responseTime,
+    profile;
+
+    public String getProfile() {
+        return profile;
+    }
 
     public Tutor(Element e) {
         name = e.getElementsByTag("h4").text();
@@ -21,6 +26,7 @@ public class Tutor {
         subjects = e.getElementsByClass("tutorSubjectList").text().trim();
         numRatings = e.getElementsByClass("starsdesc").text();
         responseTime = e.getElementsByClass("stat-response").text();
+        profile = e.select(".tutorPicture a").attr("href");
     }
 
     public String getName() {

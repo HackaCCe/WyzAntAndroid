@@ -1,6 +1,7 @@
 package com.hackacce.WyzAntAndroid;
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -73,6 +75,16 @@ public class TutorListFragment extends ListFragment {
 
             TextView taglineTextView = (TextView)convertView.findViewById(R.id.tutorTagline);
             taglineTextView.setText(t.getTagline());
+
+            Button viewTutor = (Button)convertView.findViewById(R.id.viewThisTutorButton);
+            viewTutor.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(t.getProfile()));
+//                    startActivity(i);
+                }
+            });
 
             return convertView;
         }
