@@ -16,7 +16,7 @@
                  android:allowBackup="true"
                  android:theme="@android:style/Theme.Holo.Light.NoActionBar">
 
-        <activity android:name="MainActivity"
+        <activity android:name=".QueryActivity"
                   android:logo="@drawable/wyzant"
                   android:label="@string/label_title"
                   android:configChanges="orientation|screenSize">

@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,12 +14,7 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 
 public class QueryActivity extends Activity {
-    /**
-    * Called when the activity is first created.
-    */
-
     private static final String TAG = "QueryActivity";
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +40,46 @@ public class QueryActivity extends Activity {
 
         final EditText subjectField = (EditText) findViewById(R.id.subjectField);
         final EditText zipField = (EditText) findViewById(R.id.zipField);
-        final EditText ageLowerField = (EditText) findViewById(R.id.ageLowerField);
-        final EditText ageUpperField = (EditText) findViewById(R.id.ageUpperField);
-        final EditText rateLowerField = (EditText) findViewById(R.id.rateLowerField);
-        final EditText rateUpperField = (EditText) findViewById(R.id.rateUpperField);
-
         final CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
+
+        //Range SEEK bar
+        final TextView lowerRange = (TextView)findViewById(R.id.lowerRateRange);
+        final TextView upperRange = (TextView)findViewById(R.id.upperRateRange);
+        lowerRange.setText("$"+(getString(R.string.rateMin)));
+        upperRange.setText("$"+(getString(R.string.rateMax)));
+        RangeSeekBar<Integer> rateSeekBar = new RangeSeekBar<>
+                (Integer.parseInt(getString(R.string.rateMin)),(Integer.parseInt(getString(R.string.rateMax))), this);
+        rateSeekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Integer>() {
+            @Override
+            public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
+                // handle changed range values
+                Log.i(TAG, "User selected new rate range values: MIN=" + minValue + ", MAX=" + maxValue);
+                lowerRange.setText("$" + minValue);
+                upperRange.setText("$" + maxValue);
+            }
+        });
+        //Age SEEK bar
+        final TextView lowerAge = (TextView)findViewById(R.id.lowerAgeRange);
+        final TextView upperAge = (TextView)findViewById(R.id.upperAgeRange);
+        lowerAge.setText(getString((R.string.ageMin)));
+        upperAge.setText(getString((R.string.ageMax)));
+        RangeSeekBar<Integer> ageSeekBar = new RangeSeekBar<>
+                (Integer.parseInt(getString(R.string.ageMin)),(Integer.parseInt(getString(R.string.ageMax))), this);
+        ageSeekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Integer>() {
+            @Override
+            public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
+                // handle changed range values
+                Log.i(TAG, "User selected new age range values: MIN=" + minValue + ", MAX=" + maxValue);
+                lowerAge.setText(""+minValue);
+                upperAge.setText(""+maxValue);
+            }
+        });
+
+        ViewGroup rateLayout = (ViewGroup) findViewById(R.id.rateRange);
+        rateLayout.addView(rateSeekBar);
+
+        ViewGroup ageLayout = (ViewGroup) findViewById(R.id.ageRange);
+        ageLayout.addView(ageSeekBar);
 
         ImageView mBanner;
         mBanner = (ImageView) findViewById(R.id.imageBanner);
@@ -74,10 +104,10 @@ public class QueryActivity extends Activity {
                         .append("?kw=").append(subjectField.getText().toString())
                         .append("&z=").append(zipField.getText().toString())
                         .append("&d=").append(distSpinner.getSelectedItem().toString())
-                        .append("&mina=").append(ageLowerField.getText().toString())
-                        .append("&maxa=").append(ageUpperField.getText().toString())
-                        .append("&maxh=").append(rateUpperField.getText().toString())
-                        .append("&minh=").append(rateLowerField.getText().toString())
+                        .append("&mina=").append(lowerAge.getText().toString())
+                        .append("&maxa=").append(upperAge.getText().toString())
+                        .append("&minh=").append(lowerRange.getText().toString().substring(1))
+                        .append("&maxh=").append(upperRange.getText().toString().substring(1))
                         .append("&im=").append(genderSpinner.getLastVisiblePosition() - 1)
                         .append("&bgCheck=").append(checkBox.isChecked() ? "true" : "false");
 
@@ -91,7 +121,22 @@ public class QueryActivity extends Activity {
                 startActivity(i);
 */
                 try {
-                    Document doc = Jsoup.connect(query.toString()).get();
+//                    Document doc = Jsoup.connect(query.toString()).get();
+                    Document doc = Jsoup
+                            .connect(getString(R.string.baseUrl) + getString(R.string.baseQuery))
+                            .data(
+                                    "kw", subjectField.getText().toString(),
+                                    "z", zipField.getText().toString(),
+                                    "d", distSpinner.getSelectedItem().toString(),
+                                    "mina", lowerAge.getText().toString(),
+                                    "maxa", upperAge.getText().toString(),
+                                    "minh", lowerRange.getText().toString().substring(1),
+                                    "maxh", upperRange.getText().toString().substring(1),
+                                    "im", String.format("%d", genderSpinner.getLastVisiblePosition() - 1),
+                                    "bgCheck", (checkBox.isChecked() ? "true" : "false")
+                            )
+                            .get();
+                    System.out.println(doc.title());
                 } catch (IOException ioe) {
                     Log.e(TAG, ioe.getMessage());
                 }

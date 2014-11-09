@@ -15,6 +15,12 @@
     <string name="baseUrl">http://www.wyzant.com/</string>
     <string name="baseQuery">tutorsearch</string>
     <string name="query">preview here</string>
+    <string name="rateMin">10</string>
+    <string name="rateMax">200</string>
+    <string name="ageMin">18</string>
+    <string name="ageMax">100</string>
+
+
 
     <string-array name="options_distance">
         <item>1</item>
@@ -28,6 +34,8 @@
         <item>35</item>
         <item>40</item>
     </string-array>
+
+
 
     <string-array name="options_gender">
         <item>No preference</item>
