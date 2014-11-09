@@ -13,7 +13,7 @@ public class Tutor {
         name = e.getElementsByTag("h4").text();
         imageurl = e.select(".customTutorPic img").attr("src");
         location = e.getElementsByClass("location").text();
-        distance = e.getElementsByClass("distance").text();
+        distance = e.getElementsByClass("miles").text();
         zip = e.getElementsByClass("zip").text();
         tagline = e.getElementsByClass("txt-std").text();
         hourlyRate = e.getElementsByClass("hourly-rate").get(0).text();

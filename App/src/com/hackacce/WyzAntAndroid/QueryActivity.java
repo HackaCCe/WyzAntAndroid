@@ -107,8 +107,8 @@ public class QueryActivity extends Activity {
                         .append("&im=").append(genderSpinner.getLastVisiblePosition() - 1)
                         .append("&bgCheck=").append(checkBox.isChecked() ? "true" : "false");
 
-                TextView test = (TextView) findViewById(R.id.queryPreview);
-                test.setText(query);
+                //TextView test = (TextView) findViewById(R.id.queryPreview);
+               // test.setText(query);
 /*
                 // Launches browser intent
 

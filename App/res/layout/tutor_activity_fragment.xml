@@ -4,7 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#FF8500"
+
               android:id="@+id/fragmentContainer"
         >
 
@@ -14,6 +14,7 @@
             android:id="@+id/imageBanner"
             android:src="@drawable/wyzantbanner"
             android:layout_marginTop="8dp"
+            android:background="#FF8500"
             android:contentDescription="@string/label_title" />
 
 </LinearLayout>
