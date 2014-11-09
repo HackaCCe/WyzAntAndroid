@@ -13,7 +13,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class TutorListActivity extends Activity {
@@ -92,6 +91,4 @@ public class TutorListActivity extends Activity {
 */
         return tutorListFragment;
     }
-
-    class SerializableElements extends Elements implements Serializable {}
 }
