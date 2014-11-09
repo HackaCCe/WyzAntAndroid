@@ -5,10 +5,10 @@
     <string name="label_subject">Subject</string> <!--kw-->
     <string name="label_zip">ZIP code</string> <!--z-->
     <string name="label_distance">Distance in Miles</string> <!--d-->
-    <string name="label_hourly_rate">Hourly Rate</string> <!--minh, maxh; 10..200-->
-    <string name="label_age">Age</string> <!--mina, maxa; 18..100-->
+    <string name="label_hourly_rate">Hourly Rate Range</string> <!--minh, maxh; 10..200-->
+    <string name="label_age">Age Range</string> <!--mina, maxa; 18..100-->
     <string name="label_gender">Gender</string> <!--im-->
-    <string name="label_bg_check">Background check on file</string> <!--bgCheck-->
+    <string name="label_bg_check">Background check</string> <!--bgCheck-->
 
     <string name="label_search">Search</string>
 
