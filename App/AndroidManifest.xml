@@ -14,7 +14,7 @@
                  android:logo="@drawable/wyzant"
 
                  android:allowBackup="true"
-                android:theme="@android:style/Theme.Light">
+                 android:theme="@android:style/Theme.Light">
 
         <activity android:name="MainActivity"
                   android:logo="@drawable/wyzant"

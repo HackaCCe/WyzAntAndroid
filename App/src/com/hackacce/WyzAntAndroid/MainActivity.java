@@ -12,8 +12,6 @@ public class MainActivity extends Activity {
      * Called when the activity is first created.
         */
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,14 +19,14 @@ public class MainActivity extends Activity {
 
         Spinner distSpinner = (Spinner)findViewById(R.id.distField);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> distAdapter =
+        final ArrayAdapter<CharSequence> distAdapter =
                 ArrayAdapter.createFromResource(this, R.array.options_distance, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         distAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         distSpinner.setAdapter(distAdapter);
 
-        Spinner genderSpinner = (Spinner)findViewById(R.id.genderField);
+        final Spinner genderSpinner = (Spinner)findViewById(R.id.genderField);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> genderAdapter =
                 ArrayAdapter.createFromResource(this, R.array.options_gender, android.R.layout.simple_spinner_item);
@@ -36,15 +34,15 @@ public class MainActivity extends Activity {
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         genderSpinner.setAdapter(genderAdapter);
-        EditText subjectField = (EditText) findViewById(R.id.subjectField);
-        EditText zipField = (EditText) findViewById(R.id.zipField);
-        EditText ageLowerField = (EditText) findViewById(R.id.ageLowerField);
-        EditText ageUpperField = (EditText) findViewById(R.id.ageUpperField);
-        EditText rateLowerField = (EditText) findViewById(R.id.rateLowerField);
-        EditText rateUpperField = (EditText) findViewById(R.id.rateUpperField);
 
+        final EditText subjectField = (EditText) findViewById(R.id.subjectField);
+        final EditText zipField = (EditText) findViewById(R.id.zipField);
+        final EditText ageLowerField = (EditText) findViewById(R.id.ageLowerField);
+        final EditText ageUpperField = (EditText) findViewById(R.id.ageUpperField);
+        final EditText rateLowerField = (EditText) findViewById(R.id.rateLowerField);
+        final EditText rateUpperField = (EditText) findViewById(R.id.rateUpperField);
 
-        CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
+        final CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
 
         Button mStringBuilder;
         mStringBuilder = (Button)findViewById(R.id.search);
@@ -52,28 +50,27 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-//Convert user input to string
+        //Convert user input to string
 
-               String query ="http://www.wyzant.com/tutorsearch?kw="
-                       + subjectField.getText().toString()
-                       + "&z=" + zipField.getText().toString()
-                       + "&d=" + distSpinner.getSelectedItem().toString()
-                        + "&mina=" + ageLowerField.getText().toString()
-                       + "&maxa=" + ageUpperField.getText().toString()
-                     + "&maxh=" + rateUpperField.getText().toString()
-                       + "&minh=" + rateLowerField.getText().toString()
-                       + "&im="+ (genderSpinner.getLastVisiblePosition() -1)
-                      + "&bgCheck=" +  (checkBox.isChecked()? "true" : "false")
-                       ;
-              TextView test = (TextView)findViewById(R.id.queryPreview);
-                test.setText(query);
+            StringBuilder query = new StringBuilder(R.string.baseQuery)
+                .append("?kw=").append(subjectField.getText().toString())
+                .append("&z=").append(zipField.getText().toString())
+                .append("&d=").append(distSpinner.getSelectedItem().toString())
+                .append("&mina=").append(ageLowerField.getText().toString())
+                .append("&maxa=").append(ageUpperField.getText().toString())
+                .append("&maxh=").append(rateUpperField.getText().toString())
+                .append("&minh=").append(rateLowerField.getText().toString())
+                .append("&im=").append(genderSpinner.getLastVisiblePosition() - 1)
+                .append("&bgCheck=").append(checkBox.isChecked() ? "true" : "false");
 
-//launches browser intent
+            TextView test = (TextView) findViewById(R.id.queryPreview);
+            test.setText(query);
 
-                String url = query;
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
+        // Launches browser intent
+
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(query.toString()));
+            startActivity(i);
             }
         });
     }

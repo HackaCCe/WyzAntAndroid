@@ -11,6 +11,8 @@
     <string name="label_bg_check">Background check on file</string> <!--bgCheck-->
 
     <string name="label_search">Search</string>
+
+    <string name="baseQuery">"http://www.wyzant.com/tutorsearch</string>
     <string name="query">preview here</string>
 
     <string-array name="options_distance">
