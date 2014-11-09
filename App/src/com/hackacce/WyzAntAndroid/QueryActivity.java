@@ -120,26 +120,9 @@ public class QueryActivity extends Activity {
                 i.setData(Uri.parse(query.toString()));
                 startActivity(i);
 */
-                try {
-//                    Document doc = Jsoup.connect(query.toString()).get();
-                    Document doc = Jsoup
-                            .connect(getString(R.string.baseUrl) + getString(R.string.baseQuery))
-                            .data(
-                                    "kw", subjectField.getText().toString(),
-                                    "z", zipField.getText().toString(),
-                                    "d", distSpinner.getSelectedItem().toString(),
-                                    "mina", lowerAge.getText().toString(),
-                                    "maxa", upperAge.getText().toString(),
-                                    "minh", lowerRange.getText().toString().substring(1),
-                                    "maxh", upperRange.getText().toString().substring(1),
-                                    "im", String.format("%d", genderSpinner.getLastVisiblePosition() - 1),
-                                    "bgCheck", (checkBox.isChecked() ? "true" : "false")
-                            )
-                            .get();
-                    System.out.println(doc.title());
-                } catch (IOException ioe) {
-                    Log.e(TAG, ioe.getMessage());
-                }
+                Intent i = new Intent(QueryActivity.this, TutorListActivity.class);
+                i.putExtra("URL", query.toString());
+                startActivity(i);
 
             }
 

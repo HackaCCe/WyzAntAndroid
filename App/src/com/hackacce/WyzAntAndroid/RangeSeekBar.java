@@ -1,20 +1,20 @@
-package com.hackacce.WyzAntAndroid;
+    package com.hackacce.WyzAntAndroid;
 
-        import java.math.BigDecimal;
+    import java.math.BigDecimal;
 
-        import android.content.Context;
-        import android.graphics.Bitmap;
-        import android.graphics.BitmapFactory;
-        import android.graphics.Canvas;
-        import android.graphics.Color;
-        import android.graphics.Paint;
-        import android.graphics.Paint.Style;
-        import android.graphics.RectF;
-        import android.os.Bundle;
-        import android.os.Parcelable;
-        import android.view.MotionEvent;
-        import android.view.ViewConfiguration;
-        import android.widget.ImageView;
+    import android.content.Context;
+    import android.graphics.Bitmap;
+    import android.graphics.BitmapFactory;
+    import android.graphics.Canvas;
+    import android.graphics.Color;
+    import android.graphics.Paint;
+    import android.graphics.Paint.Style;
+    import android.graphics.RectF;
+    import android.os.Bundle;
+    import android.os.Parcelable;
+    import android.view.MotionEvent;
+    import android.view.ViewConfiguration;
+    import android.widget.ImageView;
 
 /**
  * Widget that lets users select a minimum and maximum value on a given numerical range. The range value types can be one of Long, Double, Integer, Float, Short, Byte or BigDecimal.<br />
