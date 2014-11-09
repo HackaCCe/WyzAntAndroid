@@ -7,12 +7,13 @@
               android:background="#FF8500"
               android:id="@+id/fragmentContainer"
         >
+
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/imageBanner"
             android:src="@drawable/wyzantbanner"
             android:layout_marginTop="8dp"
-            />
+            android:contentDescription="@string/label_title" />
 
 </LinearLayout>

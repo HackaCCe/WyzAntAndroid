@@ -20,8 +20,6 @@
     <string name="ageMin">18</string>
     <string name="ageMax">100</string>
 
-
-
     <string-array name="options_distance">
         <item>1</item>
         <item>2</item>
@@ -35,11 +33,17 @@
         <item>40</item>
     </string-array>
 
-
-
     <string-array name="options_gender">
         <item>No preference</item>
         <item>Female</item>
         <item>Male</item>
     </string-array>
+
+    <string name="tutors_title">Tutors available</string>
+    <string name="dummyPortrait">portrait goes here</string>
+    <string name="dummyName">name goes here</string>
+    <string name="dummyRate">rate goes here</string>
+    <string name="dummyDistance">distance goes here</string>
+    <string name="dummyTagline">tagline goes here</string>
+    <string name="buttonLabel">View this Tutor</string>
 </resources>
