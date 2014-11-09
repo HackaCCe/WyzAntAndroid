@@ -46,9 +46,6 @@ public class MainActivity extends Activity {
 
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox);
 
-        Spinner distField = (Spinner) findViewById(R.id.distField);
-        Spinner genderField = (Spinner) findViewById(R.id.genderField);
-
         Button mStringBuilder;
         mStringBuilder = (Button)findViewById(R.id.search);
         mStringBuilder.setOnClickListener(new View.OnClickListener() {
@@ -60,12 +57,12 @@ public class MainActivity extends Activity {
                String query ="http://www.wyzant.com/tutorsearch?kw="
                        + subjectField.getText().toString()
                        + "&z=" + zipField.getText().toString()
-                       + "&d=" + distField.getSelectedItem().toString()
+                       + "&d=" + distSpinner.getSelectedItem().toString()
                         + "&mina=" + ageLowerField.getText().toString()
                        + "&maxa=" + ageUpperField.getText().toString()
                      + "&maxh=" + rateUpperField.getText().toString()
                        + "&minh=" + rateLowerField.getText().toString()
-                       + "&im="+ (genderField.getLastVisiblePosition() -1)
+                       + "&im="+ (genderSpinner.getLastVisiblePosition() -1)
                       + "&bgCheck=" +  (checkBox.isChecked()? "true" : "false")
                        ;
               TextView test = (TextView)findViewById(R.id.queryPreview);

@@ -5,17 +5,21 @@
           android:versionName="1.0">
 
     <uses-sdk
-        android:minSdkVersion="10"
+        android:minSdkVersion="11"
         android:targetSdkVersion="20"
         />
 
     <application android:label="@string/app_name"
                  android:icon="@drawable/wyzant"
+                 android:logo="@drawable/wyzant"
+
                  android:allowBackup="true"
                 android:theme="@android:style/Theme.Light">
 
         <activity android:name="MainActivity"
-                  android:label="@string/label_title">
+                  android:logo="@drawable/wyzant"
+                  android:label="@string/label_title"
+                  android:configChanges="orientation|screenSize">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
