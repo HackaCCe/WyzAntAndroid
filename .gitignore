@@ -1,5 +1,8 @@
 *workspace.xml
 
+# keeping the jsoup lib out of source control
+lib/jsoup*.jar
+
 # Built application files
 *.apk
 *.ap_

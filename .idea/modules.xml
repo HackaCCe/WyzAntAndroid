@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/App/App.iml" filepath="$PROJECT_DIR$/App/App.iml" />
-      <module fileurl="file://$PROJECT_DIR$/JSOUPtest/JSOUPtest.iml" filepath="$PROJECT_DIR$/JSOUPtest/JSOUPtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsoupTest/jsoup test.iml" filepath="$PROJECT_DIR$/jsoupTest/jsoup test.iml" />
     </modules>
   </component>
 </project>
+
